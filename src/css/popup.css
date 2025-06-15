@@ -1,0 +1,8 @@
+#popup-page {
+    width: 550px;
+    height: 350px;
+}
+
+#popup-body  .popup-page__container {
+    height: 100%;
+}

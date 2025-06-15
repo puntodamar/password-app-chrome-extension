@@ -1,0 +1,4 @@
+/* Main entry file for CSS */
+
+@import "./components/index.css";
+@import "./popup.css";
