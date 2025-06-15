@@ -3,13 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/assets/application.css" />
-    <script src="/assets/application.js"></script>
+    <link rel="stylesheet" href="../assets/application.css" />
+    <script src="../assets/application.js"></script>
     <title>SafePass</title>
   </head>
   <body id="popup-page">
     <div class="popup-page__container">
-      <i class="bi bi-safe-fill"></i> SafePass
+      <turbo-frame
+              id="app"
+              src="/frames/signin.html"
+              loading="lazy"
+              data-controller="app"
+      ></turbo-frame>
     </div>
   </body>
 </html>
