@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--    <meta name="turbo-cache-control" content="no-cache">-->
     <link rel="stylesheet" href="../assets/application.css" />
     <script src="../assets/application.js"></script>
     <title>SafePass</title>
@@ -11,8 +12,6 @@
     <div class="popup-page__container" style="margin-top: 10vh">
       <turbo-frame
               id="app"
-              src="/frames/signin.html"
-              loading="lazy"
               data-controller="app"
       ></turbo-frame>
     </div>

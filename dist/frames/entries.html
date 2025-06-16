@@ -1,35 +1,60 @@
 <turbo-frame id="app">
-    <nav class="navbar navbar-expand border-bottom bg-white">
-        <div class="container-fluid d-flex">
-            <a class="navbar-brand">
-                <i class="bi bi-safe-fill"></i>
-            </a>
-            <form class="d-flex flex-grow-1 position-relative" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                </input>
-                <button class="btn btn-sm btn-primary entry-search-button">
-                    <i class="bi bi-search"></i>
-                </button>
-            </form>
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-circle"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li>
-                            <button
-                                    class="dropdown-item"
-                                    data-controller="auth"
-                                    data-action="click->auth#signOut">
-                                Sign Out
-                            </button>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div data-controller="search">
+        <nav class="navbar navbar-expand border-bottom bg-white">
+            <div class="container-fluid d-flex">
+                <a class="navbar-brand">
+                    <i class="bi bi-safe-fill"></i>
+                </a>
+                <div class="d-flex flex-grow-1 position-relative"
+                    role="search">
+                    <input class="form-control me-2"
+                            type="search"
+                            placeholder="Search"
+                            aria-label="Search"
+                            data-action="input->search#search input->search#toggleClearButton"
+                            data-search-target="input">
+                    <div class="entry-search-button">
+                        <button
+                            class="btn btn-sm btn-outline-danger rounded-circle p-0 lh-1 me-2"
+                            data-search-target="clearButton"
+                            data-action="click->search#clearSearch" hidden>
+                            <i class="bi bi-x"></i>
+                        </button>
+                        <button class="btn btn-sm btn-primary">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
 
+                </div>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <button
+                                        class="dropdown-item"
+                                        data-controller="auth"
+                                        data-action="click->auth#signOut">
+                                    Sign Out
+                                </button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="entries" data-controller="entries">
+            <div class="entries__sidebar" data-entries-target="sidebar"></div>
+            <div class="entries__main" data-entries-target="main">
+                <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </turbo-frame>
 
