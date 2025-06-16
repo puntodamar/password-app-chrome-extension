@@ -30,6 +30,10 @@ class EntriesController extends Controller {
         this.mainTarget.innerHTML = main(params.entry)
     }
     
+    navigateToLogin({params}){
+        chrome.tabs.create({url: params.entry.url})
+    }
+    
     
 }
 
