@@ -1,5 +1,5 @@
 import {Controller} from "@hotwired/stimulus";
-import {setSessionStorage} from "../services/storage_service.js";
+import {setSessionStorage, removeSessionStorage} from "../services/storage_service.js";
 
 class AuthController extends Controller {
     static targets = ["flash", "email", "password"]
@@ -27,6 +27,11 @@ class AuthController extends Controller {
             const message = error.message || error.toString()
             this.flashTarget.innerHTML = `<div class="p-3 bg-danger text-white rounder my-3">${message}</div>`
         }
+    }
+
+    async signOut() {
+        await removeSessionStorage("token")
+        Turbo.visit("/frames/signin.html", {frame: "app"})
     }
 }
 

@@ -6,4 +6,8 @@ const getSessionStorage = async (key) => {
     return new Promise(resolve => chrome.storage.session.get([key], result => resolve(result[key])))
 }
 
-export {setSessionStorage, getSessionStorage}
+const removeSessionStorage = async (key) => {
+    return new Promise((resolve) => chrome.storage.session.remove([key], resolve(true)))
+}
+
+export {setSessionStorage, getSessionStorage, removeSessionStorage}
