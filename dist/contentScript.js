@@ -1,1 +1,1 @@
-(()=>{})();
+(()=>{var o=({username:e,password:t})=>{document.querySelector('input[type="text"]').value=e,document.querySelector('input[type="password"]').value=t};chrome.runtime.onMessage.addListener(e=>{console.log("message",e),o(e)});})();

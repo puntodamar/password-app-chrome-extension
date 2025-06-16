@@ -53,6 +53,41 @@ class EntriesController extends Controller {
     }
     
     
+    async fillInCredentials({params}) {
+        const [activeTab] = await chrome.tabs.query({active: true, currentWindow: true});
+        
+        if (!activeTab) {
+            return
+        }
+
+        
+        let parsedUrl
+        try {
+            parsedUrl = new URL(activeTab.url);
+        } catch(error) {
+            console.log("Invalid url in active tab", error);
+            return
+        }
+
+        const activeEntry = parsedUrl.href.includes(params.entry.url)
+        
+        if (activeEntry) {
+            chrome.tabs.sendMessage(activeTab.id, {
+                username: params.entry.username,
+                password: params.entry.password,
+            })
+        }
+    }
+    
+    
 }
 
 export default EntriesController;
+
+
+// const autoFillSignIn = ({username, password}) => {
+//     document.querySelector('input[name="text"]').value = username
+//     document.querySelector('input[name="password"]').value = password
+// }
+//
+// chrome.runtime.onMessage.addListener((message) => autoFillSignIn(message))
