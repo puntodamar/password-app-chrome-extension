@@ -1,10 +1,11 @@
 import {Controller} from "@hotwired/stimulus";
+import {getSessionStorage} from "../services/storage_service.js";
 
 class AppController extends Controller {
-    connect() {
-        const token = false;
+    async connect() {
+        const token = await getSessionStorage("token");
         if (token) {
-            Turbo.visit("/frames/entries.html", {frame: "app"})
+            Turbo.visit("/frames/entries.html", { frame: "app" });
         }
     }
 }
