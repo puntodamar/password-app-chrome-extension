@@ -24,6 +24,24 @@ class EntriesController extends Controller {
             console.error(err);
             return
          }
+         
+         const [activeTab] = await chrome.tabs.query({active: true, currentWindow: true});
+        
+        if (!activeTab) {
+            return
+        }
+        
+        let parsedUrl
+        try {
+            parsedUrl = new URL(activeTab.url);
+        } catch(error) {
+            console.log("Invalid url in active tab", error);
+        }
+        
+        const activeEntry = entries.find(entry => entry.url.includes(parsedUrl.hostname));
+        if (activeEntry) {
+            this.mainTarget.innerHTML = main(activeEntry);
+        }
     }
 
     updateMain({params}) {
