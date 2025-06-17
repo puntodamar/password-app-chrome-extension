@@ -1,6 +1,17 @@
+import {getUsernameInput, getPasswordInput} from "./utils/inputs.js";
+
 const autoFillSignIn = ({username, password}) => {
-    document.querySelector('input[type="text"]').value = username
-    document.querySelector('input[type="password"]').value = password
+    
+    const usernameInput = getUsernameInput()
+    const passwordInput = getPasswordInput()
+
+    if (usernameInput) {
+        usernameInput.value = username
+    }
+    
+    if (passwordInput) {
+        passwordInput.value = password
+    }
 }
 
 chrome.runtime.onMessage.addListener((message) => {
