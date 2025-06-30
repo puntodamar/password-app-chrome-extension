@@ -1,2 +1,4 @@
-A password app manager.
-For web and api version refer to https://github.com/puntodamar/rails-turbo-password-app
+A chrome extension for password app manager.
+For more information visit the app repo https://github.com/puntodamar/rails-turbo-password-app
+
+![img.png](img.png)
